@@ -47,7 +47,7 @@ function LoginForm() {
     
         cookie.set("accessToken", accessToken, { expires: 5 / 24 }); // Seteo del cookie hacia la pagina
         cookie.set("refreshToken", refreshToken, { expires: 5 / 24 }); // Seteo del cookie hacia la pagina
-        console.log(resJson)
+
         if (resJson.error == false) {
             router.push('/dashboard')
             setForm({ state: 'success', message: resJson.message })

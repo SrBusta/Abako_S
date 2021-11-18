@@ -16,7 +16,7 @@ export default function sidebar({ children, active, color, username }) {
 
 
     const [activeOption, setActiveOption] = useState(active);
-
+    
 
     //TooltipFunction();
 

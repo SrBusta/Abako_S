@@ -37,7 +37,7 @@ export default function tiendas() {
     }
 
     const {data,error} =useSWR('http://159.223.97.216/api/user',url=>FetcherGet(url))
-    if(error) return 'ERROR: '
+    if(error) return 'ERROR'
     if(!data) return 'Loading'
 
     return (

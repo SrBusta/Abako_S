@@ -2,6 +2,7 @@ import { useState } from 'react'
 import useSWR from 'swr';
 import cookie from 'js-cookie';
 import {mutate} from 'swr'
+import FetcherGet from '../../../../lib/FetcherGet';
 
 export default function newMovimiento({ handleModal, shop_id }) {
 
@@ -37,7 +38,9 @@ export default function newMovimiento({ handleModal, shop_id }) {
     }
 
     const { data, error } = useSWR(`http://159.223.97.216/api/user/shop/${shop_id}/product`, url => FetcherGet(url))
+    if(error) return 'asd'
     if (!data) return 'Loading'
+    
 
     return (<>
         <div className="modal open py-32 px-10 min-h-screen">
