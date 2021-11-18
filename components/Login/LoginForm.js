@@ -34,7 +34,7 @@ function LoginForm() {
 
         setForm({ state: 'loading' });
 
-        const res = await fetch('http://159.223.97.216/api/login', {
+        const res = await fetch('http://159.223.97.216/api/session', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(state),
