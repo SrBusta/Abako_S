@@ -1,12 +1,10 @@
-import Header from "../components/index/Header"
-
+import Header from "../components/Index/Header"
 import { faArrowCircleUp, faAddressCard, faListAlt, faChartBar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from "react";
-import Plancard from "../components/index/plancard";
-import { Footer } from "../components/index/Footer";
-import { Planes } from "../components/index/Planes";
-import { Caracteristicas } from "../components/index/Caracteristicas";
+import { Footer } from "../components/Index/Footer";
+import { Planes } from "../components/Index/Planes";
+import { Caracteristicas } from "../components/Index/Caracteristicas";
 
 const Index = () => {
 
