@@ -1,9 +1,8 @@
 import useSWR from 'swr';
 import cookie from 'js-cookie';
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import NewProducto from '../Tiendas/newProducto';
 import { useTable, useSortBy, useGlobalFilter, usePagination } from 'react-table'
-import { useMemo } from 'react';
 import GlobalFilter from '../../../lib/GlobalFilter';
 
 

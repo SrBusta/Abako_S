@@ -1,6 +1,5 @@
 import {withRouter} from 'next/router'
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect,useState } from 'react';
 import cookie from 'js-cookie'
 import ConfiguracionRegister from '../../components/Register/ConfiguracionRegister'
 

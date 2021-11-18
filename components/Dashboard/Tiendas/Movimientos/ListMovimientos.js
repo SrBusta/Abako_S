@@ -1,11 +1,8 @@
-import useSWR from 'swr';
-import FetcherGet from '../../../../lib/FetcherGet';
+
 import cookie from 'js-cookie';
-import { useState } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import NewMovimiento from './newMovimiento';
-import { useEffect } from 'react';
 import { useTable, useSortBy, useGlobalFilter, usePagination } from 'react-table'
-import { useMemo } from 'react';
 import GlobalFilter from '../../../../lib/GlobalFilter';
 
 export default function ListMovimientos({ shop_id }) {
