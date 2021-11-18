@@ -11,7 +11,7 @@ export default function ListMovimientos({ shop_id }) {
     const [todos, setTodos] = useState([]);
 
     const getData = async () => {
-        const response = await fetch(!shop_id ? `http://159.223.97.216/api/user/movement` : `http://159.223.97.216/api/user/shop/${shop_id}/movement`, {
+        const response = await fetch(!shop_id ? `https://abakoapi.herokuapp.com/api/user/movement` : `https://abakoapi.herokuapp.com/api/user/shop/${shop_id}/movement`, {
             headers: { accessToken: cookie.get('accessToken'), refreshToken: cookie.get('refreshToken') },
             credentials: 'include'
         }
@@ -44,40 +44,111 @@ export default function ListMovimientos({ shop_id }) {
     const handleModal = () => {
         setModal("")
     }
+    const columns = useMemo(() => [], [])
+    if (shop_id) {
 
-    const columns = useMemo(
-        () => [
-            {
-                Header: 'Tipo',
-                accessor: 'type', // accessor is the "key" in the data
-            },
-            {
-                Header: 'Marca',
-                accessor: 'brand',
-            },
-            {
-                Header: 'Modelo',
-                accessor: 'model',
-            },
-            {
-                Header: 'Encargado',
-                accessor: 'priceBuy',
-            },
-            {
-                Header: 'Fecha',
-                accessor: 'priceSell',
-            },
-            {
-                Header: 'Cantidad',
-                accessor: 'stock',
-            },
-            {
-                Header: ' ',
-                accessor: 'lala',
-            },
-        ],
-        []
-    )
+        columns = useMemo(
+            () => [
+                {
+                    Header: 'Tipo',
+                    accessor: 'product.type',
+                },
+                {
+                    Header: 'Marca',
+                    accessor: 'product.brand',
+                },
+                {
+                    Header: 'Modelo',
+                    accessor: 'product.model',
+                },
+                {
+                    Header: 'Encargado',
+                    accessor: 'createdBy.username',
+                },
+                {
+                    Header: 'Fecha',
+                    accessor: 'createdAt',
+                    Cell: ({ row: { original } }) =>
+                    (
+                        formatDate(original.createdAt)
+                    ),
+                },
+                {
+                    Header: 'Cantidad',
+                    accessor: 'quantity',
+                },
+                {
+                    Header: '',
+                    accessor: 'type',
+                    Cell: ({ row: { original } }) => (
+
+                        original.type === true ? (<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 11l3-3m0 0l3 3m-3-3v8m0-13a9 9 0 110 18 9 9 0 010-18z" />
+                        </svg>) : (<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13l-3 3m0 0l-3-3m3 3V8m0 13a9 9 0 110-18 9 9 0 010 18z" />
+                        </svg>)
+
+                    ),
+                },
+
+            ],
+            []
+        )
+    } else {
+
+        columns = useMemo(
+            () => [
+                {
+                    Header: 'Tipo',
+                    accessor: 'product.type',
+                },
+                {
+                    Header: 'Marca',
+                    accessor: 'product.brand',
+                },
+                {
+                    Header: 'Modelo',
+                    accessor: 'product.model',
+                },
+                {
+                    Header: 'Encargado',
+                    accessor: 'createdBy.username',
+                },
+                {
+                    Header: 'Fecha',
+                    accessor: 'createdAt',
+                    Cell: ({ row: { original } }) =>
+                    (
+                        formatDate(original.createdAt)
+                    ),
+                },
+                {
+                    Header: 'Cantidad',
+                    accessor: 'quantity',
+                },
+                {
+                    Header: '',
+                    accessor: 'type',
+                    Cell: ({ row: { original } }) => (
+
+                        original.type === true ? (<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 11l3-3m0 0l3 3m-3-3v8m0-13a9 9 0 110 18 9 9 0 010-18z" />
+                        </svg>) : (<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-red-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13l-3 3m0 0l-3-3m3 3V8m0 13a9 9 0 110-18 9 9 0 010 18z" />
+                        </svg>)
+
+                    ),
+                }, {
+                    Header: 'Tienda',
+                    accessor: 'shop.name'
+                }
+
+            ],
+            []
+        )
+    }
+
+
 
     const productsData = useMemo(() => [...todos], [todos]);
 
@@ -111,12 +182,18 @@ export default function ListMovimientos({ shop_id }) {
 
 
     return (<div>
-        {shop_id ? <button onClick={viewModal} className="p-4 "> + Añadir</button> : <></>}
-        {modal == "" ? (<></>) : (<NewMovimiento shop_id={shop_id} handleModal={handleModal} />)}
-        <GlobalFilter preGlobalFilteredRows={preGlobalFilteredRows}
+        {shop_id ? <div className='grid grid-cols-2'>
+            <div><button onClick={viewModal} className="p-4"> + Añadir</button></div>
+            <div className='p-4 justify-self-end'> <GlobalFilter preGlobalFilteredRows={preGlobalFilteredRows}
+                setGlobalFilter={setGlobalFilter}
+                globalFilter={state.globalFilter}
+            /></div>
+        </div> : <div className='grid grid-cols-1'> <div className='p-4 justify-self-start'> <GlobalFilter preGlobalFilteredRows={preGlobalFilteredRows}
             setGlobalFilter={setGlobalFilter}
             globalFilter={state.globalFilter}
-        />
+        /></div></div>}
+        {modal == "" ? (<></>) : (<NewMovimiento shop_id={shop_id} handleModal={handleModal} />)}
+
         <table {...getTableProps()} className="items-center bg-transparent w-full border-collapse text-center">
             <thead>
                 {headerGroups.map(headerGroup => (
@@ -154,55 +231,68 @@ export default function ListMovimientos({ shop_id }) {
                                     </td>
                                 )
                             })}
+
                         </tr>
                     )
                 })}
             </tbody>
         </table>
 
-        <div className="pagination">
-            <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-                {'<<'}
-            </button>{' '}
-            <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-                {'<'}
-            </button>{' '}
-            <button onClick={() => nextPage()} disabled={!canNextPage}>
-                {'>'}
-            </button>{' '}
-            <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
-                {'>>'}
-            </button>{' '}
-            <span>
-                Pagina{' '}
-                <strong>
-                    {pageIndex + 1} of {pageOptions.length}
-                </strong>{' '}
-            </span>
-            <span>
-                Ir a la pag.:{' '}
-                <input
-                    type="number"
-                    defaultValue={pageIndex + 1}
+        <div className="pagination grid grid-cols-3 px-2">
+            <div className="justify-self-start">
+                <span>
+                    Ir a la pag.:{' '}
+                    <input
+                        type="number"
+                        defaultValue={pageIndex + 1}
+                        onChange={e => {
+                            const page = e.target.value ? Number(e.target.value) - 1 : 0
+                            gotoPage(page)
+                        }}
+                        style={{ width: '100px' }}
+                    />
+                </span>{' '}
+            </div>
+
+            <div className="justify-self-center">
+                <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+                    {'<<'}
+                </button>{' '}
+                <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+                    {'<'}
+                </button>{' '}
+                <button onClick={() => nextPage()} disabled={!canNextPage}>
+                    {'>'}
+                </button>{' '}
+                <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+                    {'>>'}
+                </button>{' '}
+                <span>
+                    Pagina{' '}
+                    <strong>
+                        {pageIndex + 1} of {pageOptions.length}
+                    </strong>{' '}
+                </span>
+            </div>
+
+
+            <div className="justify-self-end">
+                <select
+                    value={pageSize}
                     onChange={e => {
-                        const page = e.target.value ? Number(e.target.value) - 1 : 0
-                        gotoPage(page)
+                        setPageSize(Number(e.target.value))
                     }}
-                    style={{ width: '100px' }}
-                />
-            </span>{' '}
-            <select
-                value={pageSize}
-                onChange={e => {
-                    setPageSize(Number(e.target.value))
-                }}
-            >
-                {[10, 20, 30, 40, 50].map(pageSize => (
-                    <option key={pageSize} value={pageSize}>
-                        Mostrar {pageSize}
-                    </option>
-                ))}
-            </select>
+                >
+                    {[10, 20, 30, 40, 50].map(pageSize => (
+                        <option key={pageSize} value={pageSize}>
+                            Mostrar {pageSize}
+                        </option>
+                    ))}
+                </select>
+            </div>
+
+
+
         </div>
         {/* <table className="items-center bg-transparent w-full border-collapse text-center">
             <thead>

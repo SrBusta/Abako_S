@@ -3,7 +3,7 @@ import FetcherGet from '../../../../lib/FetcherGet';
 
 export default function viewDatos({ shop_id }) {
 
-    const { data, error,message } = useSWR(`http://159.223.97.216/api/user/shop/${shop_id}`, url => FetcherGet(url));
+    const { data, error,message } = useSWR(`https://abakoapi.herokuapp.com/api/user/shop/${shop_id}`, url => FetcherGet(url));
     if (error) return 'Error '
     if (!data) return 'Loading'
 

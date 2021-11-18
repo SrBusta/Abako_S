@@ -4,6 +4,8 @@ import ConfigGeneral from '../../components/Dashboard/Configuracion/configuracio
 import ConfigEmpresa from '../../components/Dashboard/Configuracion/configuracionEmpresa'
 import useSWR from 'swr';
 import cookie from 'js-cookie';
+import router from 'next/router';
+
 
 
 
@@ -19,12 +21,12 @@ export default function configuracion() {
             .then(json => json.data);
     }
 
-    const { data, error, mutate } = useSWR(`http://159.223.97.216/api/user`, fetcher);
+    const { data, error, mutate } = useSWR(`https://abakoapi.herokuapp.com/api/user`, fetcher);
     if(error) return 'Ocurrio un error:'
     if(!data) return 'Loading'
-
+    if(data.rol==='employee') router.push('/dashboard/productos')
     return (
-        <Sidebar active="Config" color='blue' username={data.username}>
+        <Sidebar active="Config" color='blue'>
             <div className="grid xl:grid-cols-2 gap-4 grid-cols-1 mx-8 mt-6 xl:mb-0 mb-20">
                 <div className="xl:col-span-2 justify-center items-center justify-self-center">
                     <div className="justify-center flex">

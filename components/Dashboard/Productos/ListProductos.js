@@ -14,7 +14,7 @@ export default function ListProductos({ shop_id }) {
     const [todos, setTodos] = useState([]);
 
     const getData = async () => {
-        const response = await fetch(!shop_id ? `http://159.223.97.216/api/user/product` : `http://159.223.97.216/api/user/shop/${shop_id}/product`, {
+        const response = await fetch(!shop_id ? `https://abakoapi.herokuapp.com/api/user/product` : `https://abakoapi.herokuapp.com/api/user/shop/${shop_id}/product`, {
             headers: { accessToken: cookie.get('accessToken'), refreshToken: cookie.get('refreshToken') },
             credentials: 'include'
         }
@@ -23,24 +23,7 @@ export default function ListProductos({ shop_id }) {
         setTodos(data.data);
     };
 
-    // const fetcher = (url) => {
-
-    //     return fetch(url, {
-    //         headers: { accessToken: cookie.get('accessToken'), refreshToken: cookie.get('refreshToken') },
-    //         credentials: 'include'
-    //     })
-    //         .then(res => res.json())
-    //         .then(json => json.data);
-
-    // }
-
-
-    // const { data, error, mutate } = useSWR(!shop_id ? `http://159.223.97.216/api/user/product` : `http://159.223.97.216/api/user/shop/${shop_id}/product`, fetcher);
-
-
-
-    // console.log(data)
-
+    
 
     const viewModal = () => {
         setModal("true")
@@ -48,37 +31,76 @@ export default function ListProductos({ shop_id }) {
     const handleModal = () => {
         setModal("")
     }
+    const columns = useMemo(() => [], [])
+
+
+    if (shop_id) {
+        columns = useMemo(
+            () => [
+                {
+                    Header: 'Tipo',
+                    accessor: 'type', // accessor is the "key" in the data
+                },
+                {
+                    Header: 'Marca',
+                    accessor: 'brand',
+                },
+                {
+                    Header: 'Modelo',
+                    accessor: 'model',
+                },
+                {
+                    Header: 'Precio Compra',
+                    accessor: 'priceBuy',
+                },
+                {
+                    Header: 'Precio Venta',
+                    accessor: 'priceSell',
+                },
+                {
+                    Header: 'Stock',
+                    accessor: 'stock',
+                },
+            ],
+            []
+        )
+    } else {
+        columns = useMemo(
+            () => [
+                {
+                    Header: 'Tipo',
+                    accessor: 'type', // accessor is the "key" in the data
+                },
+                {
+                    Header: 'Marca',
+                    accessor: 'brand',
+                },
+                {
+                    Header: 'Modelo',
+                    accessor: 'model',
+                },
+                {
+                    Header: 'Precio Compra',
+                    accessor: 'priceBuy',
+                },
+                {
+                    Header: 'Precio Venta',
+                    accessor: 'priceSell',
+                },
+                {
+                    Header: 'Stock',
+                    accessor: 'stock',
+                }, {
+                    Header: 'Tienda',
+                    accessor: 'shop.name'
+                }
+            ],
+            []
+        )
+    }
 
 
 
-
-    const columns = useMemo(
-        () => [
-            {
-                Header: 'Tipo',
-                accessor: 'type', // accessor is the "key" in the data
-            },
-            {
-                Header: 'Marca',
-                accessor: 'brand',
-            },
-            {
-                Header: 'Modelo',
-                accessor: 'model',
-            },
-            {
-                Header: 'Precio Compra',
-                accessor: 'priceBuy',
-            }, {
-                Header: 'Precio Venta',
-                accessor: 'priceSell',
-            }, {
-                Header: 'Stock',
-                accessor: 'stock',
-            },
-        ],
-        []
-    )
 
 
 
@@ -113,17 +135,25 @@ export default function ListProductos({ shop_id }) {
         getData();
     }, [modal])
 
- 
+
     return (<>
 
 
         <div className="">
-            {shop_id ? <button onClick={viewModal} className="p-4 "> + Añadir</button> : <></>}
-            {modal == "" ? (<></>) : (<NewProducto shop_id={shop_id} handleModal={handleModal} />)}
-            <GlobalFilter preGlobalFilteredRows={preGlobalFilteredRows}
+
+            {shop_id ? <div className='grid grid-cols-2'>
+                <div><button onClick={viewModal} className="p-4"> + Añadir</button></div>
+                <div className='p-4 justify-self-end'> <GlobalFilter preGlobalFilteredRows={preGlobalFilteredRows}
+                    setGlobalFilter={setGlobalFilter}
+                    globalFilter={state.globalFilter}
+                /></div>
+            </div> :<div className='grid grid-cols-1'> <div className='p-4 justify-self-start'> <GlobalFilter preGlobalFilteredRows={preGlobalFilteredRows}
                 setGlobalFilter={setGlobalFilter}
                 globalFilter={state.globalFilter}
-            />
+            /></div></div>}
+            {modal == "" ? (<></>) : (<NewProducto shop_id={shop_id} handleModal={handleModal} />)}
+
+
             <table {...getTableProps()} className="items-center bg-transparent w-full border-collapse text-center">
                 <thead>
                     {headerGroups.map(headerGroup => (
@@ -167,51 +197,62 @@ export default function ListProductos({ shop_id }) {
                 </tbody>
             </table>
 
-            <div className="pagination">
-                <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-                    {'<<'}
-                </button>{' '}
-                <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-                    {'<'}
-                </button>{' '}
-                <button onClick={() => nextPage()} disabled={!canNextPage}>
-                    {'>'}
-                </button>{' '}
-                <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
-                    {'>>'}
-                </button>{' '}
-                <span>
-                    Pagina{' '}
-                    <strong>
-                        {pageIndex + 1} of {pageOptions.length}
-                    </strong>{' '}
-                </span>
-                <span>
-                    Ir a la pag.:{' '}
-                    <input
-                        type="number"
-                        defaultValue={pageIndex + 1}
-                        onChange={e => {
-                            const page = e.target.value ? Number(e.target.value) - 1 : 0
-                            gotoPage(page)
-                        }}
-                        style={{ width: '100px' }}
-                    />
-                </span>{' '}
-                <select
-                    value={pageSize}
-                    onChange={e => {
-                        setPageSize(Number(e.target.value))
-                    }}
-                >
-                    {[10, 20, 30, 40, 50].map(pageSize => (
-                        <option key={pageSize} value={pageSize}>
-                            Mostrar {pageSize}
-                        </option>
-                    ))}
-                </select>
-            </div>
+            <div className="pagination grid grid-cols-3 px-2">
+                <div className="justify-self-start">
+                    <span>
+                        Ir a la pag.:{' '}
+                        <input
+                            type="number"
+                            defaultValue={pageIndex + 1}
+                            onChange={e => {
+                                const page = e.target.value ? Number(e.target.value) - 1 : 0
+                                gotoPage(page)
+                            }}
+                            style={{ width: '100px' }}
+                        />
+                    </span>{' '}
+                </div>
 
+                <div className="justify-self-center">
+                    <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+                        {'<<'}
+                    </button>{' '}
+                    <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+                        {'<'}
+                    </button>{' '}
+                    <button onClick={() => nextPage()} disabled={!canNextPage}>
+                        {'>'}
+                    </button>{' '}
+                    <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+                        {'>>'}
+                    </button>{' '}
+                    <span>
+                        Pagina{' '}
+                        <strong>
+                            {pageIndex + 1} of {pageOptions.length}
+                        </strong>{' '}
+                    </span>
+                </div>
+
+
+                <div className="justify-self-end">
+                    <select
+                        value={pageSize}
+                        onChange={e => {
+                            setPageSize(Number(e.target.value))
+                        }}
+                    >
+                        {[10, 20, 30, 40, 50].map(pageSize => (
+                            <option key={pageSize} value={pageSize}>
+                                Mostrar {pageSize}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+
+
+
+            </div>
             {/* <table className="items-center bg-transparent w-full border-collapse text-center">
                 <thead>
                     <tr >

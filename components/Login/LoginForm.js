@@ -34,7 +34,7 @@ function LoginForm() {
 
         setForm({ state: 'loading' });
 
-        const res = await fetch('http://159.223.97.216/api/session', {
+        const res = await fetch('https://abakoapi.herokuapp.com/api/session', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(state),
@@ -55,7 +55,7 @@ function LoginForm() {
         } else {
             setForm({ state: 'error', message: resJson.message })
         }
-
+       
     }
 
     

@@ -26,18 +26,18 @@ export default function newMovimiento({ handleModal, shop_id }) {
     const handleSubmit = async event => {
         event.preventDefault();
 
-        const res = await fetch(`http://159.223.97.216/api/user/shop/${shop_id}/movement`, {
+        const res = await fetch(`https://abakoapi.herokuapp.com/api/user/shop/${shop_id}/movement`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', accessToken: cookie.get('accessToken'), refreshToken: cookie.get('refreshToken') },
             body: JSON.stringify(employeeState),
             credentials: 'include'
         })
         console.log(await res.json())
-        mutate(`http://159.223.97.216/api/user/shop/${shop_id}/movement`)
+        mutate(`https://abakoapi.herokuapp.com/api/user/shop/${shop_id}/movement`)
         handleModal()
     }
 
-    const { data, error } = useSWR(`http://159.223.97.216/api/user/shop/${shop_id}/product`, url => FetcherGet(url))
+    const { data, error } = useSWR(`https://abakoapi.herokuapp.com/api/user/shop/${shop_id}/product`, url => FetcherGet(url))
     if(error) return 'asd'
     if (!data) return 'Loading'
     
@@ -51,10 +51,10 @@ export default function newMovimiento({ handleModal, shop_id }) {
                     <div className="flex items-center mb-5">
                         <label htmlFor="name" className="inline-block w-20 mr-6 text-right font-bold dark:text-white text-gray-600">Producto</label>
                         <select id="firts" name="product"
-                            className="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 
+                            className="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400
                               text-gray-600 placeholder-gray-400 outline-none" onChange={handleChange}>
                                   <option >Seleccione un producto</option>
-                            {data.map(producto => (<option key={producto.id} value={producto.id}>{producto.type}</option>))}
+                            {data.map(producto => (<option key={producto.id} value={producto.id}>{producto.type} - {producto.brand} - {producto.model}</option>))}
                         </select>
                     </div>
                     <div className="flex items-center mb-5">

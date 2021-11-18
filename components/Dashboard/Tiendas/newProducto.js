@@ -28,14 +28,14 @@ export default function NewEmpleados({ handleModal, shop_id }) {
     const handleSubmit = async event => {
         event.preventDefault();
 
-        const res = await fetch(`http://159.223.97.216/api/user/shop/${shop_id}/product`, {
+        const res = await fetch(`https://abakoapi.herokuapp.com/api/user/shop/${shop_id}/product`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', accessToken: cookie.get('accessToken'), refreshToken: cookie.get('refreshToken') },
             body: JSON.stringify(employeeState),
             credentials:'include'
         })
         
-        mutate(`http://159.223.97.216/api/user/shop/${shop_id}/product`)
+        mutate(`https://abakoapi.herokuapp.com/api/user/shop/${shop_id}/product`)
         handleModal()
     }
 

@@ -7,8 +7,10 @@ import { useTheme } from 'next-themes';
 import Navbar from './navbar';
 import removeCookie from '../../lib/removeCookie';
 import router from 'next/router'
+import useSWR from 'swr';
+import FetcherGet from '../../lib/FetcherGet'
 
-export default function sidebar({ children, active, color, username }) {
+export default function sidebar({ children, active, color }) {
 
     const [mounted, setMounted] = useState(false);
     const { resolvedTheme, setTheme } = useTheme();
@@ -16,7 +18,11 @@ export default function sidebar({ children, active, color, username }) {
 
 
     const [activeOption, setActiveOption] = useState(active);
-    
+
+    const { data, error, mutate } = useSWR(`https://abakoapi.herokuapp.com/api/user`, url => FetcherGet(url));
+
+    if (error) return 'Ocurrio un error:'
+    if (!data) return 'Loading'
 
     //TooltipFunction();
 
@@ -58,13 +64,13 @@ export default function sidebar({ children, active, color, username }) {
 
                     <ul className="my-14 flex flex-row md:flex-col w-screen">
 
-                        <li className={`menu-opciones efectohover hover:border-red-700  ${activeOption == 'Inicio' ? ('border-2 border-red-700 rounded-lg md:transform-none transform -translate-y-0.5') : ('border-transparent border-2')}`}>
+                        {data.rol === 'employee' ? <></> : <li className={`menu-opciones efectohover hover:border-red-700  ${activeOption == 'Inicio' ? ('border-2 border-red-700 rounded-lg md:transform-none transform -translate-y-0.5') : ('border-transparent border-2')}`}>
                             <Link href="/dashboard"><a><IconInicio /></a></Link>
                             {/* <Tooltip name="Inicio" nameTooltip="tooltipInicio" /> */}
                             <div className="ml-10 bg-gray-900 text-gray-100 px-2 py-1.5 md:absolute md:block rounded-lg shadow-xl tooltip hidden">
                                 Inicio
                             </div>
-                        </li>
+                        </li>}
 
                         <li className={`menu-opciones efectohover hover:border-yellow-400 ${activeOption == 'Productos' ? ('border-2 border-yellow-400 rounded-lg md:transform-none transform -translate-y-0.5') : ('border-transparent border-2')}`}>
                             <Link href="/dashboard/productos"><a><IconProductos /></a></Link>
@@ -74,21 +80,21 @@ export default function sidebar({ children, active, color, username }) {
                             </div>
                         </li>
 
-                        <li className={`menu-opciones efectohover hover:border-green-700 ${activeOption == 'Tiendas' ? ('border-2 border-green-800 rounded-lg md:transform-none transform -translate-y-0.5') : ('border-transparent border-2')}`}>
+                        {data.rol === 'employee' ? <></> : <li className={`menu-opciones efectohover hover:border-green-700 ${activeOption == 'Tiendas' ? ('border-2 border-green-800 rounded-lg md:transform-none transform -translate-y-0.5') : ('border-transparent border-2')}`}>
                             <Link href="/dashboard/tiendas"><a><IconTiendas /></a></Link>
                             {/* <Tooltip name="Tiendas" nameTooltip="tooltipTienda" /> */}
                             <div className="ml-10 bg-gray-900 text-gray-100 px-2 py-1.5 md:absolute md:block rounded-lg shadow-xl tooltip hidden">
                                 Tiendas
                             </div>
-                        </li>
+                        </li>}
 
-                        <li className={`menu-opciones efectohover hover:border-blue-700 ${activeOption == 'Config' ? ('border-2 border-blue-700 rounded-lg md:transform-none transform -translate-y-0.5') : ('border-transparent border-2')}`}>
+                        {data.rol === 'employee' ? <></> : <li className={`menu-opciones efectohover hover:border-blue-700 ${activeOption == 'Config' ? ('border-2 border-blue-700 rounded-lg md:transform-none transform -translate-y-0.5') : ('border-transparent border-2')}`}>
                             <Link href="/dashboard/configuracion"><a><IconConfiguracion /></a></Link>
                             {/* <Tooltip name="Configuracion" nameTooltip="tooltipConfiguracion" /> */}
                             <div className="ml-10 bg-gray-900 text-gray-100 px-2 py-1.5 md:absolute md:block rounded-lg shadow-xl tooltip hidden">
                                 Configuracion
                             </div>
-                        </li>
+                        </li>}
 
                     </ul>
 
@@ -109,7 +115,7 @@ export default function sidebar({ children, active, color, username }) {
             <div className="flex-grow flex flex-col overflow-y-auto">
 
                 <div className="h-12 flex flex-row px-6 bg-gray-100">
-                    <Navbar colors={color} name={active} user={username} />
+                    <Navbar colors={color} name={active} user={data.username} />
                 </div>
 
                 {children}

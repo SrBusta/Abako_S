@@ -12,13 +12,19 @@ export default function inicio() {
 
     
 
-    const { data, error, mutate } = useSWR(`http://159.223.97.216/api/user`, url=>FetcherGet(url));
+    const { data, error, mutate } = useSWR(`https://abakoapi.herokuapp.com/api/user`, url=>FetcherGet(url));
     
-    if(error) return 'Ocurrio un error:'
     if(!data) return 'Loading'
 
-    if(!data.business) router.push('/dashboard/configuracion')
+ 
 
+    if(data.rol==='admin' && !data.business) router.push('/dashboard/configuracion')
+
+    
+
+    if(data.rol=='employee') router.push('dashboard/productos')
+    console.log(data.rol)
+    
     return (
 
         <Sidebar active='Inicio' color='red' username={data.username}>

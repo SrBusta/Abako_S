@@ -36,12 +36,10 @@ export default function tiendas() {
         setModal("")
     }
 
-    const {data,error} =useSWR('http://159.223.97.216/api/user',url=>FetcherGet(url))
-    if(error) return 'ERROR'
-    if(!data) return 'Loading'
+    
 
     return (
-        <Sidebar active="Tiendas" color='green' username={data.username}>
+        <Sidebar active="Tiendas" color='green'>
             <div className='flex-1 md:py-5 md:px-20  p-10 mb-10'>
                 <div className='grid grid-cols-1 h-full'>
 

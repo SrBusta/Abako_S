@@ -4,10 +4,10 @@ import FetcherGet from "../../../lib/FetcherGet"
 
 export default function InicioEstadistica() {
 
-    const {data,error} = useSWR(`http://159.223.97.216/api/user/product`,url => FetcherGet(url))
+    const {data,error} = useSWR(`https://abakoapi.herokuapp.com/api/user/product`,url => FetcherGet(url))
     if(error) return 'error'
     if(!data) return 'loading'
-    console.log(data)
+   
 
     let products=[];
     let stock=[];

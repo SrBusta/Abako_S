@@ -28,7 +28,7 @@ export default function confGeneralForm(props) {
         event.preventDefault();
 
 
-        const res = await fetch('http://159.223.97.216/api/user', {
+        const res = await fetch('https://abakoapi.herokuapp.com/api/user', {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json',accessToken: cookie.get('accessToken'), refreshToken: cookie.get('refreshToken') },
             body: JSON.stringify(state),
@@ -38,7 +38,7 @@ export default function confGeneralForm(props) {
 
         const respuestaJson=await res.json();
 
-       mutate(`http://159.223.97.216/api/user`)
+       mutate(`https://abakoapi.herokuapp.com/api/user`)
        handleSearch()
     }
 

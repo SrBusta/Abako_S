@@ -19,7 +19,7 @@ export default function OneShop() {
     const router = useRouter();
     const { id } = router.query;
 
-    const { data, error } = useSWR(`http://159.223.97.216/api/user/shop/${id}`, url => FetcherGet(url));
+    const { data, error } = useSWR(`https://abakoapi.herokuapp.com/api/user/shop/${id}`, url => FetcherGet(url));
     if (error) return 'Error: '
     if (!data) return 'Loading'
 
@@ -108,7 +108,7 @@ export default function OneShop() {
                 {menuopciones == 'Productos' ? <ListProductos shop_id={id}/> : (menuopciones == 'Movimientos' ? <ListMovimientos shop_id={id}/> : (menuopciones == 'Empleados' ?
 
                     <>  
-                        <button onClick={viewModal} className="p-4 ">+</button>
+                        
                         <ListEmpleado shop_id={id} />
                     </>
 
