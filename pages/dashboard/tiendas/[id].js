@@ -60,31 +60,31 @@ export default function OneShop() {
                         <div className="w-14 h-14 bg-white -my-8 mx-5 rounded-xl shadow-lg grid grid-cols-1 cursor-pointer " onClick={() => router.back()}>
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-green-500 justify-self-center self-center" viewBox="0 0 20 20" fill="currentColor">
 
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12.066 11.2a1 1 0 000 1.6l5.334 4A1 1 0 0019 16V8a1 1 0 00-1.6-.8l-5.333 4zM4.066 11.2a1 1 0 000 1.6l5.334 4A1 1 0 0011 16V8a1 1 0 00-1.6-.8l-5.334 4z" />
                             </svg>
                         </div>
-                        <span className="uppercase font-sans font-bold">{data.name}</span>
+                        <span className=" font-sans font-bold">{data.name}</span>
                     </div>
 
                     <div className="mt-5 flex">
                         <div className="w-full xl:block hidden">
                             <div className="grid grid-cols-4 text-center justify-items-center justify-center justify-self-center items-center">
-                                <div className={`w-full dark:shadow-md text-center cursor-pointer ${menuopciones=='Productos'?('text-black border-b border-t border-gray-200') : ''}`}>
+                                <div className={`w-full dark:shadow-md text-center cursor-pointer ${menuopciones == 'Productos' ? ('text-black border-b border-t border-gray-200') : ''}`}>
                                     <div className="text-center p-2" onClick={change} >Productos</div>
                                 </div>
-                                <div className={`w-full dark:shadow-md text-center cursor-pointer ${menuopciones=='Empleados'?('text-black border-b border-t border-gray-200') : ''}`}>
+                                <div className={`w-full dark:shadow-md text-center cursor-pointer ${menuopciones == 'Empleados' ? ('text-black border-b border-t border-gray-200') : ''}`}>
                                     <div className="text-center p-2" onClick={change}>Empleados</div>
                                 </div>
-                                <div className={`w-full dark:shadow-md text-center cursor-pointer ${menuopciones=='Movimientos'?('text-black border-b border-t border-gray-200') : ''}`}>
+                                <div className={`w-full dark:shadow-md text-center cursor-pointer ${menuopciones == 'Movimientos' ? ('text-black border-b border-t border-gray-200') : ''}`}>
                                     <div className="text-center p-2" onClick={change}>Movimientos</div>
                                 </div>
-                                <div className={`w-full dark:shadow-md text-center cursor-pointer ${menuopciones=='Datos'?('text-black border-b border-t border-gray-200') : ''}`}>
+                                <div className={`w-full dark:shadow-md text-center cursor-pointer ${menuopciones == 'Datos' ? ('text-black border-b border-t border-gray-200') : ''}`}>
                                     <div className="text-center p-2" onClick={change}>Datos</div>
                                 </div>
 
                             </div>
                         </div>
-                        <div className="xl:hidden  grid grid-cols-1 justify-self-center w-full">
+                        <div className="xl:hidden  grid grid-cols-1 justify-self-center w-full p-2">
                             <select value={menuopciones} onChange={change} className="rounded-2xl shadows fondo5 dark:bg-gray-300 dark:shadow-md text-center cursor-pointer text-gray-900 dark:text-gray-200 p-2">
                                 <option>Productos</option>
                                 <option>Empleados</option>
