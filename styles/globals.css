@@ -1,114 +1,153 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;400;600&display=swap");
 
 /* Index*/
 
-#toogle:checked ~ label div.toogle-dot{
-    @apply translate-x-3;
+#toogle:checked ~ label div.toogle-dot {
+  @apply translate-x-3;
 }
 
-.backback{
-    background:#fafbfc
+.backback {
+  background: #fafbfc;
 }
 
-
-.link{
-
-@apply text-gray-300 block hover:text-yellow-500 duration-300 hover:translate-y-1 
-
+.link {
+  @apply text-gray-300 block hover:text-yellow-500 duration-300 hover:translate-y-1;
 }
 
-html{
-    scroll-behavior: smooth;
+html {
+  scroll-behavior: smooth;
 }
 
-.modal{
-    position: fixed;
-    z-index: 999;
-    top: 0;
-    left: 0;
-    width: 100%;
-    min-height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: none;
-    justify-content: center;
-    align-items: center;
-
+.modal {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
 }
-.modal-conteiner{
-    position: relative;
-    padding: 1rem;
+.modal-conteiner {
+  position: relative;
+  padding: 1rem;
 }
-.modal.open{
-    display: flex;
+.modal.open {
+  display: flex;
 }
 
 /*asdasdsa*/
 
-.menu-opciones{
-    @apply md:mx-10 md:mb-10 break-normal inline-flex cursor-pointer p-1 mx-5 flex-1 justify-center md:justify-between
+.menu-opciones {
+  @apply md:mx-10 md:mb-10 break-normal inline-flex cursor-pointer p-1 mx-5 flex-1 justify-center md:justify-between;
 }
 
-.efectohover{
-    transition-property: border-radius,border;
-    transition-duration: 0.7s;
-    transition-timing-function: ease;
-    transition-delay: 0.2s;
+.efectohover {
+  transition-property: border-radius, border;
+  transition-duration: 0.7s;
+  transition-timing-function: ease;
+  transition-delay: 0.2s;
 }
 
-.efectohover:hover{
-    @apply rounded-lg
+.efectohover:hover {
+  @apply rounded-lg;
 }
 
 .efectohover:hover > .tooltip {
-    visibility: visible;
-    opacity: 1;
+  visibility: visible;
+  opacity: 1;
 }
 
-.tooltip{
-    visibility:hidden;
-    opacity:0;
-    transition-property: opacity;
-    transition-duration: 0.5s;
-    transition-timing-function: ease-in-out;
-    transition-delay: 0.2s;
+.tooltip {
+  visibility: hidden;
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0.2s;
 }
 
 /*Navbar*/
-.navbar{
-    /*animation: test 1s linear infinite;*/
-    letter-spacing: 0.1em;
-    position: relative;
+.navbar {
+  /*animation: test 1s linear infinite;*/
+  letter-spacing: 0.1em;
+  position: relative;
+  color: transparent;
 }
 
-.navbar::before{
-    content: attr(data-text);
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    color: black;
-    border-right:2px solid;
-    border-color:transparent;
-    overflow: hidden;
-    animation: test 1s linear;
-    -webkit-animation: test 1s linear;
+.navbar::before {
+  content: attr(data-text);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  color: black;
+  border-right: 2px solid;
+  border-color: transparent;
+  overflow: hidden;
+  animation: test 1s linear;
+  -webkit-animation: test 1s linear;
 }
 
 @keyframes test {
-    0%{
-        width: 0%;
-        border-color:black;
-    }
-    50%{
-        width: 50%;
-        border-color:transparent;
-    }
-    100%{
-        width: 100%;
-        border-color:transparent;
-    }
-    
+  0% {
+    width: 0%;
+    border-color: black;
+  }
+  50% {
+    width: 50%;
+    border-color: transparent;
+  }
+  100% {
+    width: 100%;
+    border-color: transparent;
+  }
 }
 
+.main {
+
+}
+
+body .main::-webkit-scrollbar, .scroll::-webkit-scrollbar {
+  width: 8px;
+  /* Tamaño del scroll en vertical */
+  height: 8px;
+  /* Tamaño del scroll en horizontal */
+  /* Ocultar scroll */
+}
+
+/* Ponemos un color de fondo y redondeamos las esquinas del thumb */
+
+body .main::-webkit-scrollbar-thumb, .scroll::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+/* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
+
+body .main::-webkit-scrollbar-thumb:hover,.scroll::-webkit-scrollbar-thumb:hover {
+  background: #d5d5d5;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* Cambiamos el fondo cuando esté en active */
+
+body .main::-webkit-scrollbar-thumb:active, .scroll::-webkit-scrollbar-thumb:active {
+  background-color: #999999;
+}
+
+/* Ponemos un color de fondo y redondeamos las esquinas del track */
+body .main::-webkit-scrollbar-track,.scroll::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 4px;
+}
+
+/* Cambiamos el fondo cuando esté en active o hover */
+body .main::-webkit-scrollbar-track:hover, .scroll::-webkit-scrollbar-track:hover,
+body .main::-webkit-scrollbar-track:active, .scroll::-webkit-scrollbar-track:active {
+  background: #d4d4d4;
+}

@@ -12,7 +12,6 @@ function LoginForm() {
         username: '',
         password: ''
     })
-
     const [form, setForm] = useState(false)
 
     /*Declaración de las funciones */
@@ -27,7 +26,6 @@ function LoginForm() {
             [name]: value
         }))
     }
-
     /*Función N°2*/
     const handleSubmit = async (event) => {
         event.preventDefault(); //evento para que el submit no te redireccione a otra pagina
@@ -45,8 +43,8 @@ function LoginForm() {
         const accessToken = await resJson.data.accessToken; // capturo el token que se envia desde el API
         const refreshToken = await resJson.data.refreshToken; // capturo el token que se envia desde el API
     
-       // cookie.set("accessToken", accessToken, { expires: 5 / 24 }); // Seteo del cookie hacia la pagina
-        //cookie.set("refreshToken", refreshToken, { expires: 5 / 24 }); // Seteo del cookie hacia la pagina
+        cookie.set("accessToken", accessToken, { expires: 5 / 24 }); // Seteo del cookie hacia la pagina
+        cookie.set("refreshToken", refreshToken, { expires: 5 / 24 }); // Seteo del cookie hacia la pagina
 
         if (resJson.error == false) {
             router.push('/dashboard')
@@ -57,7 +55,6 @@ function LoginForm() {
         }
        
     }
-
     
     /*Retorno del HTML*/
     return (

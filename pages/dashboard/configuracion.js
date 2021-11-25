@@ -27,8 +27,10 @@ export default function configuracion() {
     if(data.rol==='employee') router.push('/dashboard/productos')
     return (
         <Sidebar active="Config" color='blue'>
-            <div className="grid xl:grid-cols-2 gap-4 grid-cols-1 mx-8 mt-6 xl:mb-0 mb-20">
-                <div className="xl:col-span-2 justify-center items-center justify-self-center">
+
+
+            <div className="grid xl:grid-cols-2 xl:gap-4 gap-10 grid-cols-1 mx-8 mt-6 xl:mb-0 mb-20">
+                <div className="xl:col-span-2 justify-center items-center justify-self-center mb-8">
                     <div className="justify-center flex">
 
                         <img className="w-52 h-52 rounded-full" src='/user.png' />
@@ -44,6 +46,8 @@ export default function configuracion() {
                 <ConfigGeneral data={data}/>
                 <ConfigEmpresa data={data}/>
             </div>
+
+
         </Sidebar>
     )
 };

@@ -24,8 +24,6 @@ export default function OneShop() {
     if (!data) return 'Loading'
 
 
-
-
     const viewModal = () => {
         setModal("true")
     }
@@ -40,19 +38,85 @@ export default function OneShop() {
         if (opcion) {
 
             setMenuopciones(event.target.value);
-            
+
 
         } else {
 
             setMenuopciones(event.target.innerHTML);
-            
+
         }
 
     }
 
 
     return (<Sidebar active='Tiendas' color='green'>
-        <div className="w-full md:pb-0 pb-16 pt-4 px-7 dark:text-white text-gray-900">
+        <div className='flex-1 md:py-5 md:px-10 p-10 mb-10'>
+            <div className='grid grid-cols-1 h-full py-4'>
+                <div className="h-full border rounded-xl shadow-md">
+                    {/*
+                            !------------------------- Tittle ---------------------------!
+                        */}
+                    <div className="inline-flex w-full">
+                        <div className="w-14 h-14 bg-white -my-8 mx-5 rounded-xl shadow-lg grid grid-cols-1 cursor-pointer " onClick={() => router.back()}>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-green-500 justify-self-center self-center" viewBox="0 0 20 20" fill="currentColor">
+
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                            </svg>
+                        </div>
+                        <span className="uppercase font-sans font-bold">{data.name}</span>
+                    </div>
+
+                    <div className="mt-5 flex">
+                        <div className="w-full xl:block hidden">
+                            <div className="grid grid-cols-4 text-center justify-items-center justify-center justify-self-center items-center">
+                                <div className={`w-full dark:shadow-md text-center cursor-pointer ${menuopciones=='Productos'?('text-black border-b border-t border-gray-200') : ''}`}>
+                                    <div className="text-center p-2" onClick={change} >Productos</div>
+                                </div>
+                                <div className={`w-full dark:shadow-md text-center cursor-pointer ${menuopciones=='Empleados'?('text-black border-b border-t border-gray-200') : ''}`}>
+                                    <div className="text-center p-2" onClick={change}>Empleados</div>
+                                </div>
+                                <div className={`w-full dark:shadow-md text-center cursor-pointer ${menuopciones=='Movimientos'?('text-black border-b border-t border-gray-200') : ''}`}>
+                                    <div className="text-center p-2" onClick={change}>Movimientos</div>
+                                </div>
+                                <div className={`w-full dark:shadow-md text-center cursor-pointer ${menuopciones=='Datos'?('text-black border-b border-t border-gray-200') : ''}`}>
+                                    <div className="text-center p-2" onClick={change}>Datos</div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div className="xl:hidden  grid grid-cols-1 justify-self-center w-full">
+                            <select value={menuopciones} onChange={change} className="rounded-2xl shadows fondo5 dark:bg-gray-300 dark:shadow-md text-center cursor-pointer text-gray-900 dark:text-gray-200 p-2">
+                                <option>Productos</option>
+                                <option>Empleados</option>
+                                <option>Movimientos</option>
+                                <option>Datos</option>
+                            </select>
+                        </div>
+
+                        {modal == "" ? (<></>) : (<NewEmpleados shop_id={id} handleModal={handleModal} />)}
+                    </div>
+                    <div className="grid grid-cols-1 shadows dark:shadow-lg rounded-2xl h-full">
+
+                        {menuopciones == 'Productos' ? <ListProductos shop_id={id} /> : (menuopciones == 'Movimientos' ? <ListMovimientos shop_id={id} /> : (menuopciones == 'Empleados' ?
+
+                            <>
+                                <ListEmpleado shop_id={id} />
+                            </>
+
+                            : <ViewDatos shop_id={id} />))}
+
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+
+
+        {/* <div className="w-full md:pb-0 pb-16 pt-4 px-7 dark:text-white text-gray-900">
             <div className=" justify-center justify-items-center justify-self-center">
                 <div className="grid md:grid-cols-4 grid-cols-1 justify-center justify-items-center justify-self-center">
                     <div>
@@ -118,8 +182,8 @@ export default function OneShop() {
 
             </div>
             </div>
-        </div>
-    </Sidebar>)
+        </div> */}
+    </Sidebar >)
 };
 
 export async function getServerSideProps({ req, res }) {

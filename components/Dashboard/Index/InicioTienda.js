@@ -11,7 +11,7 @@ export default function InicioTienda() {
     return (<>
 
         {data.map(shops => (
-            <div key={shops.id}>
+            <div key={shops.id} >
 
                 <div className="rounded-lg  text-gray-900 font-sans cursor-default mb-4">
                     <div className="flex flex-row text-md border-b-2 border-red-700 pb-1 mx-2 font-sans justify-items-stretch" >

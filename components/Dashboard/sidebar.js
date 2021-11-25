@@ -64,9 +64,9 @@ export default function sidebar({ children, active, color }) {
 
                     <ul className="my-14 flex flex-row md:flex-col w-screen">
 
-                        {data.rol === 'employee' ? <></> : <li className={`menu-opciones efectohover hover:border-red-700  ${activeOption == 'Inicio' ? ('border-2 border-red-700 rounded-lg md:transform-none transform -translate-y-0.5') : ('border-transparent border-2')}`}>
+                        {data.rol === 'employee' ? <></> : <li className={`menu-opciones efectohover hover:border-red-500  ${activeOption == 'Inicio' ? ('border-2 border-red-500 rounded-lg md:transform-none transform -translate-y-0.5') : ('border-transparent border-2')}`}>
                             <Link href="/dashboard"><a><IconInicio /></a></Link>
-                            {/* <Tooltip name="Inicio" nameTooltip="tooltipInicio" /> */}
+                            
                             <div className="ml-10 bg-gray-900 text-gray-100 px-2 py-1.5 md:absolute md:block rounded-lg shadow-xl tooltip hidden">
                                 Inicio
                             </div>
@@ -74,7 +74,7 @@ export default function sidebar({ children, active, color }) {
 
                         <li className={`menu-opciones efectohover hover:border-yellow-400 ${activeOption == 'Productos' ? ('border-2 border-yellow-400 rounded-lg md:transform-none transform -translate-y-0.5') : ('border-transparent border-2')}`}>
                             <Link href="/dashboard/productos"><a><IconProductos /></a></Link>
-                            {/* <Tooltip name="Productos" nameTooltip="tooltipProducto" /> */}
+                            
                             <div className="ml-10 bg-gray-900 text-gray-100 px-2 py-1.5 md:absolute md:block rounded-lg shadow-xl tooltip hidden">
                                 Productos
                             </div>
@@ -82,7 +82,7 @@ export default function sidebar({ children, active, color }) {
 
                         {data.rol === 'employee' ? <></> : <li className={`menu-opciones efectohover hover:border-green-700 ${activeOption == 'Tiendas' ? ('border-2 border-green-800 rounded-lg md:transform-none transform -translate-y-0.5') : ('border-transparent border-2')}`}>
                             <Link href="/dashboard/tiendas"><a><IconTiendas /></a></Link>
-                            {/* <Tooltip name="Tiendas" nameTooltip="tooltipTienda" /> */}
+                            
                             <div className="ml-10 bg-gray-900 text-gray-100 px-2 py-1.5 md:absolute md:block rounded-lg shadow-xl tooltip hidden">
                                 Tiendas
                             </div>
@@ -90,7 +90,7 @@ export default function sidebar({ children, active, color }) {
 
                         {data.rol === 'employee' ? <></> : <li className={`menu-opciones efectohover hover:border-blue-700 ${activeOption == 'Config' ? ('border-2 border-blue-700 rounded-lg md:transform-none transform -translate-y-0.5') : ('border-transparent border-2')}`}>
                             <Link href="/dashboard/configuracion"><a><IconConfiguracion /></a></Link>
-                            {/* <Tooltip name="Configuracion" nameTooltip="tooltipConfiguracion" /> */}
+                            
                             <div className="ml-10 bg-gray-900 text-gray-100 px-2 py-1.5 md:absolute md:block rounded-lg shadow-xl tooltip hidden">
                                 Configuracion
                             </div>
@@ -112,9 +112,9 @@ export default function sidebar({ children, active, color }) {
 
 
 
-            <div className="flex-grow flex flex-col overflow-y-auto">
+            <div className="flex-grow flex flex-col overflow-y-auto main">
 
-                <div className="h-12 flex flex-row px-6 bg-gray-100">
+                <div className="h-max-12 flex flex-row px-6 bg-gray-100">
                     <Navbar colors={color} name={active} user={data.username} />
                 </div>
 

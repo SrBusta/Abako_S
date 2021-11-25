@@ -58,7 +58,7 @@ export default function newTienda(props) {
             body: JSON.stringify(shopState),
             credentials:'include'
         })
-        console.log( await res.json())
+        
         mutate('https://abakoapi.herokuapp.com/api/user/shop')
 
         handleModal()

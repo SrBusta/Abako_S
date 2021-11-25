@@ -7,7 +7,7 @@ export default function viewDatos({ shop_id }) {
     if (error) return 'Error '
     if (!data) return 'Loading'
 
-    console.log(message)
+   
     return (<div className="grid  grid-cols-1 md:grid-cols-2 m-5 p-5">
         <div>
             <div className="font-bold text-xl">Datos Generales :</div>

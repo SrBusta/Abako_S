@@ -13,9 +13,9 @@ export default function InicioEstadistica() {
     let stock=[];
     data.map(product=>(product.stock<10?products.push(product.type):''))
     data.map(product=>(product.stock<10?stock.push(product.stock):''))
-
+   
     return (<>
-        <div>
+        <div className="p-3">
             <Bar
                 data={{
                     labels: products,

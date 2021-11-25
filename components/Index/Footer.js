@@ -65,8 +65,8 @@ export const Footer = () => {
                             </a>
 
                         </div>
-                        <div class="flex flex-col items-center justify-center gap-2">
-                            <h1 class="font-bold  text-xl">
+                        <div className="flex flex-col items-center justify-center gap-2">
+                            <h1 className="font-bold  text-xl">
                                 Sobre Nosotros
                             </h1>
 
@@ -83,11 +83,11 @@ export const Footer = () => {
                             </a>
 
                         </div>
-                        <div class="w-full flex justify-center items-center col-span-full lg:col-auto my-4 ">
+                        <div className="w-full flex justify-center items-center col-span-full lg:col-auto my-4 ">
 
-                            <form class="flex bg-white rounded-l">
-                                <input class="p-2 rounded-l-lg text-gray-800 border-gray-200 bg-white w-3/4" placeholder="Correo" />
-                                <button class="px-3 bg-yellow-400  text-gray-800 text-xs lg:text-base font-bold uppercase border-yellow-500">Subscribirte</button>
+                            <form className="flex bg-white rounded-l">
+                                <input className="p-2 rounded-l-lg text-gray-800 border-gray-200 bg-white w-3/4" placeholder="Correo" />
+                                <button className="px-3 bg-yellow-400  text-gray-800 text-xs lg:text-base font-bold uppercase border-yellow-500">Subscribirte</button>
                             </form>
 
                         </div>

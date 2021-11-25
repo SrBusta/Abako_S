@@ -18,7 +18,7 @@ export default function newMovimiento({ handleModal, shop_id }) {
             ...prevState,
             [name]: value
         }))
-        console.log(employeeState)
+  
 
     }
 
@@ -32,7 +32,7 @@ export default function newMovimiento({ handleModal, shop_id }) {
             body: JSON.stringify(employeeState),
             credentials: 'include'
         })
-        console.log(await res.json())
+        
         mutate(`https://abakoapi.herokuapp.com/api/user/shop/${shop_id}/movement`)
         handleModal()
     }
