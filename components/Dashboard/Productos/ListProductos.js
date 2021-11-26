@@ -164,7 +164,7 @@ export default function ListProductos({ shop_id }) {
                                 {headerGroup.headers.map(column => (
                                     <th
                                         {...column.getHeaderProps(column.getSortByToggleProps())}
-                                        className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold"
+                                        className="px-6 bg-blueGray-50 text-blueGray-500 align-middle border dark:border-prueba border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold"
                                     >
                                         {column.render('Header')}
                                         <span>

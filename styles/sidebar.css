@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*SIDEBAR*/
+.sidebar-abako {
+  @apply /* General */border flex z-50 bg-gray-100 
+    /* Desktop */  md:w-20 md:flex-col md:h-full md:overflow-y-scroll md:overflow-x-hidden
+    /* Responsive */ w-full flex-row bottom-0 h-12 fixed
+    /* Dark Mode */dark:bg-pruebaA5 dark:border-prueba6
+}
+
+.btn-darkmode {
+  @apply /*General*/ cursor-pointer z-50 ml-12 mb-5 mt-2 absolute w-min
+    /*Desktop*/ md:block 
+    /*Responsive*/ hidden
+    /*Dark Mode*/ 
+}
+
+.image-business-sidebar {
+  @apply /*General*/ mt-8
+    /*Desktop*/ md:block
+    /*Responsive*/ hidden
+    /*Dark Mode*/;
+}
+
+.list-option-sidebar {
+  @apply /*General*/ break-normal inline-flex cursor-pointer p-1 flex-1
+    /*Desktop*/ md:mx-10 md:mb-10 md:justify-between
+    /*Responsive*/ justify-center mx-5
+    /*Dark Mode*/ 
+    /*Hover*/ hover:rounded-lg;
+}
+
+.active-option-sidebar {
+  @apply border-2 rounded-lg md:transform-none transform -translate-y-0.5;
+}
+
+.btn-logout {
+  @apply /*General*/ my-10 break-normal cursor-pointer mt-auto
+    /*Desktop*/ md:items-end md:flex md:justify-center
+    /*Responsive*/ hidden
+    /*Dark Mode*/
+}
+
+.main-sidebar {
+  @apply /*General*/ overflow-y-auto flex flex-col flex-grow 
+      /*Desktop*/ md:ml-20
+      /*Responsive*/ 
+      /*Dark Mode*/ 
+}
+
+.navbar-sidebar {
+  @apply /*General*/ bg-gray-100 px-6 flex flex-row max-h-12
+    /*Desktop*/ 
+    /*Responsive*/ 
+    /*Dark Mode*/dark:bg-pruebaA5 dark:border-prueba6
+}

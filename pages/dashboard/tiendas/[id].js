@@ -52,12 +52,12 @@ export default function OneShop() {
     return (<Sidebar active='Tiendas' color='green'>
         <div className='flex-1 md:py-5 md:px-10 p-10 mb-10'>
             <div className='grid grid-cols-1 h-full py-4'>
-                <div className="h-full border rounded-xl shadow-md">
+                <div className="h-full border rounded-xl shadow-md dark:border-prueba">
                     {/*
                             !------------------------- Tittle ---------------------------!
                         */}
                     <div className="inline-flex w-full">
-                        <div className="w-14 h-14 bg-white -my-8 mx-5 rounded-xl shadow-lg grid grid-cols-1 cursor-pointer " onClick={() => router.back()}>
+                        <div className="w-14 h-14 bg-white -my-8 ml-5 mr-3 rounded-xl shadow-lg grid grid-cols-1 cursor-pointer dark:bg-pruebaA3" onClick={() => router.back()}>
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 text-green-500 justify-self-center self-center" viewBox="0 0 20 20" fill="currentColor">
 
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12.066 11.2a1 1 0 000 1.6l5.334 4A1 1 0 0019 16V8a1 1 0 00-1.6-.8l-5.333 4zM4.066 11.2a1 1 0 000 1.6l5.334 4A1 1 0 0011 16V8a1 1 0 00-1.6-.8l-5.334 4z" />
@@ -69,16 +69,16 @@ export default function OneShop() {
                     <div className="mt-5 flex">
                         <div className="w-full xl:block hidden">
                             <div className="grid grid-cols-4 text-center justify-items-center justify-center justify-self-center items-center">
-                                <div className={`w-full dark:shadow-md text-center cursor-pointer ${menuopciones == 'Productos' ? ('text-black border-b border-t border-gray-200') : ''}`}>
+                                <div className={`w-full  text-center cursor-pointer ${menuopciones == 'Productos' ? ( 'dark:border-prueba border-b border-t border-gray-200') : ''}`}>
                                     <div className="text-center p-2" onClick={change} >Productos</div>
                                 </div>
-                                <div className={`w-full dark:shadow-md text-center cursor-pointer ${menuopciones == 'Empleados' ? ('text-black border-b border-t border-gray-200') : ''}`}>
+                                <div className={`w-full  text-center cursor-pointer ${menuopciones == 'Empleados' ? ('dark:border-prueba border-b border-t border-gray-200') : ''}`}>
                                     <div className="text-center p-2" onClick={change}>Empleados</div>
                                 </div>
-                                <div className={`w-full dark:shadow-md text-center cursor-pointer ${menuopciones == 'Movimientos' ? ('text-black border-b border-t border-gray-200') : ''}`}>
+                                <div className={`w-full  text-center cursor-pointer ${menuopciones == 'Movimientos' ? ('dark:border-prueba border-b border-t border-gray-200') : ''}`}>
                                     <div className="text-center p-2" onClick={change}>Movimientos</div>
                                 </div>
-                                <div className={`w-full dark:shadow-md text-center cursor-pointer ${menuopciones == 'Datos' ? ('text-black border-b border-t border-gray-200') : ''}`}>
+                                <div className={`w-full  text-center cursor-pointer ${menuopciones == 'Datos' ? ('dark:border-prueba border-b border-t border-gray-200') : ''}`}>
                                     <div className="text-center p-2" onClick={change}>Datos</div>
                                 </div>
 

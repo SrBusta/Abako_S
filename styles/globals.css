@@ -4,6 +4,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;400;600&display=swap");
 
 /* Index*/
+body{
+  @apply dark:bg-pruebaA3
+}
 
 #toogle:checked ~ label div.toogle-dot {
   @apply translate-x-3;
@@ -14,7 +17,7 @@
 }
 
 .link {
-  @apply text-gray-300 block hover:text-yellow-500 duration-300 hover:translate-y-1;
+  @apply text-gray-500 block hover:text-yellow-500 duration-300 hover:translate-y-1;
 }
 
 html {
@@ -58,10 +61,6 @@ html {
   @apply rounded-lg;
 }
 
-.efectohover:hover > .tooltip {
-  visibility: visible;
-  opacity: 1;
-}
 
 .tooltip {
   visibility: hidden;
@@ -85,7 +84,7 @@ html {
   position: absolute;
   width: 100%;
   height: 100%;
-  color: black;
+  //color:black;
   border-right: 2px solid;
   border-color: transparent;
   overflow: hidden;
@@ -108,11 +107,9 @@ html {
   }
 }
 
-.main {
 
-}
 
-body .main::-webkit-scrollbar, .scroll::-webkit-scrollbar {
+ .main::-webkit-scrollbar, .scroll::-webkit-scrollbar {
   width: 8px;
   /* Tamaño del scroll en vertical */
   height: 8px;
@@ -122,32 +119,48 @@ body .main::-webkit-scrollbar, .scroll::-webkit-scrollbar {
 
 /* Ponemos un color de fondo y redondeamos las esquinas del thumb */
 
-body .main::-webkit-scrollbar-thumb, .scroll::-webkit-scrollbar-thumb {
+ .main::-webkit-scrollbar-thumb, .scroll::-webkit-scrollbar-thumb {
   background: #ccc;
   border-radius: 10px;
 }
 
 /* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
 
-body .main::-webkit-scrollbar-thumb:hover,.scroll::-webkit-scrollbar-thumb:hover {
+ .main::-webkit-scrollbar-thumb:hover,.scroll::-webkit-scrollbar-thumb:hover {
   background: #d5d5d5;
   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 /* Cambiamos el fondo cuando esté en active */
 
-body .main::-webkit-scrollbar-thumb:active, .scroll::-webkit-scrollbar-thumb:active {
+ .main::-webkit-scrollbar-thumb:active, .scroll::-webkit-scrollbar-thumb:active {
   background-color: #999999;
 }
 
 /* Ponemos un color de fondo y redondeamos las esquinas del track */
-body .main::-webkit-scrollbar-track,.scroll::-webkit-scrollbar-track {
+ .main::-webkit-scrollbar-track,.scroll::-webkit-scrollbar-track {
   background: transparent;
   border-radius: 4px;
 }
 
 /* Cambiamos el fondo cuando esté en active o hover */
-body .main::-webkit-scrollbar-track:hover, .scroll::-webkit-scrollbar-track:hover,
-body .main::-webkit-scrollbar-track:active, .scroll::-webkit-scrollbar-track:active {
+ .main::-webkit-scrollbar-track:hover, .scroll::-webkit-scrollbar-track:hover,
+.main::-webkit-scrollbar-track:active, .scroll::-webkit-scrollbar-track:active {
   background: #d4d4d4;
+}
+
+
+.scrolltest::-webkit-scrollbar{
+  width: 12px;
+  background-color: #F5F5F5;
+}
+.scrolltest::-webkit-scrollbar-track{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.9);
+  border-radius: 10px;
+  background-color: #CCCCCC;
+}
+.scrolltest::-webkit-scrollbar-thumb{
+  border-radius: 10px;
+  background-color: #D62929;
+  background-image: -webkit-linear-gradient(90deg,transparent,rgba(0, 0, 0, 0.4) 50%,transparent,transparent)
 }
