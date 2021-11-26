@@ -44,14 +44,14 @@
 }
 
 .main-sidebar {
-  @apply /*General*/ overflow-y-auto flex flex-col flex-grow 
+  @apply /*General*/ flex flex-col flex-grow 
       /*Desktop*/ md:ml-20
       /*Responsive*/ 
       /*Dark Mode*/ 
 }
 
 .navbar-sidebar {
-  @apply /*General*/ bg-gray-100 px-6 flex flex-row max-h-12
+  @apply /*General*/ bg-gray-100 px-6 h-14
     /*Desktop*/ 
     /*Responsive*/ 
     /*Dark Mode*/dark:bg-pruebaA5 dark:border-prueba6

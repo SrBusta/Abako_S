@@ -194,7 +194,7 @@ export default function ListMovimientos({ shop_id }) {
             rows={rows}
         /></div></div>}
         {modal == "" ? (<></>) : (<NewMovimiento shop_id={shop_id} handleModal={handleModal} />)}
-        <div className="overflow-auto">
+        <div className="overflow-x-auto">
             <table {...getTableProps()} className="items-center bg-transparent w-full border-collapse text-center">
                 <thead>
                     {headerGroups.map(headerGroup => (

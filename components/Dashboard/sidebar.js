@@ -127,7 +127,7 @@ export default function sidebar({ children, active, color }) {
 
 
 
-            <div className="main-sidebar scroll">
+            <div className="main-sidebar">
 
                 <div className="navbar-sidebar">
                     <Navbar colors={color} name={active} user={data.username} />

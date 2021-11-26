@@ -85,7 +85,7 @@ export default function OneShop() {
                             </div>
                         </div>
                         <div className="xl:hidden  grid grid-cols-1 justify-self-center w-full p-2">
-                            <select value={menuopciones} onChange={change} className="rounded-2xl shadows fondo5 dark:bg-gray-300 dark:shadow-md text-center cursor-pointer text-gray-900 dark:text-gray-200 p-2">
+                            <select value={menuopciones} onChange={change} className="shadows  dark:bg-pruebaA3 dark:shadow-md text-center cursor-pointer text-gray-900 dark:text-gray-200 p-2">
                                 <option>Productos</option>
                                 <option>Empleados</option>
                                 <option>Movimientos</option>

@@ -17,7 +17,8 @@ module.exports = {
         'pruebaA3':'#36393f',
         'pruebaA4':'#171310',
         'pruebaA5':'#202225',
-        'prueba6':'#282626'
+        'prueba6':'#282626',
+        'prueba7':'#2d3035'
       }),
 
       gradientColorStops: theme => ({
@@ -29,7 +30,7 @@ module.exports = {
 
       borderColor: theme => ({
         ...theme('colors'), 
-        'prueba':'#303238',
+        'prueba':'#4b4b4b',
         'prueba6':'#111111'
       }),
 
