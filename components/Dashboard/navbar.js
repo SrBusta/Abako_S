@@ -14,7 +14,7 @@ export default function navbar({ colors, name, user }) {
     const { resolvedTheme, setTheme } = useTheme();
     useEffect(() => setMounted(true), []);
     return (
-        <div className="grid md:grid-cols-4 grid-cols-2 my-2 w-full">
+        <div className="grid md:grid-cols-4 grid-cols-2 my-2 w-full pt-1">
             <div className="col-start-1 text-left font-semibold text-lg dark:text-white text-black navbar" data-text={`/${name}`}>/{name}</div>
             <Menu as="div" className="col-start-4 text-right">
                 <div>

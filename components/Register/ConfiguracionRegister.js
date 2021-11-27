@@ -20,9 +20,9 @@ export default function ConfiguracionRegister() {
         event.preventDefault();
 
 
-        const res = await fetch('https://abakoapi.herokuapp.com/api/user/business', {
+        const res = await fetch('https://api.abako.xyz/api/user/business', {
             method: 'PATCH',
-            headers: { 'Content-Type': 'application/json', accessToken: cookie.get('accessToken'), refreshToken: cookie.get('refreshToken') },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(state),
             credentials:'include'
 

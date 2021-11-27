@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 export default function cardTiendas() {
 
-    const { data, error, mutate } = useSWR('https://abakoapi.herokuapp.com/api/user/shop', url => FetcherGet(url));
+    const { data, error, mutate } = useSWR('https://api.abako.xyz/api/user/shop', url => FetcherGet(url));
     if (error) return 'Error: '
     if (!data) return 'Loading'
     var k = 1;

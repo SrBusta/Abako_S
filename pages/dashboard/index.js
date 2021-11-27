@@ -13,7 +13,7 @@ export default function inicio() {
 
 
 
-    const { data, error, mutate } = useSWR(`https://abakoapi.herokuapp.com/api/user`, url => FetcherGet(url));
+    const { data, error, mutate } = useSWR(`https://api.abako.xyz/api/user`, url => FetcherGet(url));
 
     if (!data) return 'Loading'
 

@@ -31,18 +31,18 @@ export default function NewProductos({ handleModal, shop_id }) {
     const handleSubmit = async event => {
         event.preventDefault();
 
-        const res = await fetch(`https://abakoapi.herokuapp.com/api/user/shop/${shop_id}/product`, {
+        const res = await fetch(`https://api.abako.xyz/api/user/shop/${shop_id}/product`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json', accessToken: cookie.get('accessToken'), refreshToken: cookie.get('refreshToken') },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(employeeState),
             credentials: 'include'
         })
 
-        mutate(`https://abakoapi.herokuapp.com/api/user/shop/${shop_id}/product`)
+        mutate(`https://api.abako.xyz/api/user/shop/${shop_id}/product`)
         handleModal()
     }
 
-    const { data, error } = useSWR(`https://abakoapi.herokuapp.com/api/user/shop/${shop_id}/product`, url => FetcherGet(url))
+    const { data, error } = useSWR(`https://api.abako.xyz/api/user/shop/${shop_id}/product`, url => FetcherGet(url))
 
 
 

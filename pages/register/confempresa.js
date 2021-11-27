@@ -14,7 +14,7 @@ export default withRouter( function confempresa({router}) {
 
     useEffect(async() => {
 
-        const res = await fetch('https://abakoapi.herokuapp.com/api/login', {
+        const res = await fetch('https://api.abako.xyz/api/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(state),
@@ -22,11 +22,8 @@ export default withRouter( function confempresa({router}) {
         })
 
         const resJson = await res.json() // capturo los datos que se envia desde el API en formato Json
-        const accessToken = await resJson.data.accessToken; // capturo el token que se envia desde el API
-        const refreshToken = await resJson.data.refreshToken; // capturo el token que se envia desde el API
-    
-        cookie.set("accessToken", accessToken, { expires: 1 / 24, sameSite: 'Strict' }); // Seteo del cookie hacia la pagina
-        cookie.set("refreshToken", refreshToken, { expires: 1 / 24, sameSite: 'Strict' }); // Seteo del cookie hacia la pagina
+
+
 
       }, []);
 

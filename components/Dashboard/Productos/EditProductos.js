@@ -31,14 +31,14 @@ export default function EditProductos({ editar, handleModal,shop_id }) {
     const handleSubmit = async event => {
         event.preventDefault();
 
-        const res = await fetch(`https://abakoapi.herokuapp.com/api/user/shop/${shop_id}/product/${editar.data.id}`, {
+        const res = await fetch(`https://api.abako.xyz/api/user/shop/${shop_id}/product/${editar.data.id}`, {
             method: 'PATCH',
-            headers: { 'Content-Type': 'application/json', accessToken: Cookies.get('accessToken'), refreshToken: Cookies.get('refreshToken') },
+            headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify(state),
             credentials: 'include'
         })
 
-        mutate(`https://abakoapi.herokuapp.com/api/user/shop/${shop_id}/product`)
+        mutate(`https://api.abako.xyz/api/user/shop/${shop_id}/product`)
         handleModal()
     }
 

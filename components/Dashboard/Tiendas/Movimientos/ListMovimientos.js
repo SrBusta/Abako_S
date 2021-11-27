@@ -12,8 +12,7 @@ export default function ListMovimientos({ shop_id }) {
     const [todos, setTodos] = useState([]);
 
     const getData = async () => {
-        const response = await fetch(!shop_id ? `https://abakoapi.herokuapp.com/api/user/movement` : `https://abakoapi.herokuapp.com/api/user/shop/${shop_id}/movement`, {
-            headers: { accessToken: cookie.get('accessToken'), refreshToken: cookie.get('refreshToken') },
+        const response = await fetch(!shop_id ? `https://api.abako.xyz/api/user/movement` : `https://api.abako.xyz/api/user/shop/${shop_id}/movement`, {
             credentials: 'include'
         }
         );

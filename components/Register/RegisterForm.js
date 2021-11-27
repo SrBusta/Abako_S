@@ -43,7 +43,7 @@ function RegisterForm() {
 
         } else {
 
-            const res = await fetch('https://abakoapi.herokuapp.com/api/user', {
+            const res = await fetch('https://api.abako.xyz/api/user', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(state),

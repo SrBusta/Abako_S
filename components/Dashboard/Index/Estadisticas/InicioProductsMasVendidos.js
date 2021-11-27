@@ -4,7 +4,7 @@ import FetcherGet from "../../../../lib/FetcherGet"
 
 export default function InicioProductsMasVendidos() {
 
-    const { data, error } = useSWR(`https://abakoapi.herokuapp.com/api/user/movement`, url => FetcherGet(url))
+    const { data, error } = useSWR(`https://api.abako.xyz/api/user/movement`, url => FetcherGet(url))
     if (error) return 'error'
     if (!data) return 'loading'
 

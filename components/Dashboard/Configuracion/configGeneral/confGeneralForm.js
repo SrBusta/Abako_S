@@ -28,9 +28,9 @@ export default function confGeneralForm(props) {
         event.preventDefault();
 
 
-        const res = await fetch('https://abakoapi.herokuapp.com/api/user', {
+        const res = await fetch('https://api.abako.xyz/api/user', {
             method: 'PATCH',
-            headers: { 'Content-Type': 'application/json',accessToken: cookie.get('accessToken'), refreshToken: cookie.get('refreshToken') },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(state),
             credentials:'include'
 
@@ -38,7 +38,7 @@ export default function confGeneralForm(props) {
 
         const respuestaJson=await res.json();
 
-       mutate(`https://abakoapi.herokuapp.com/api/user`)
+       mutate(`https://api.abako.xyz/api/user`)
        handleSearch()
     }
 
