@@ -27,7 +27,10 @@ export default function configuracion() {
     if (data.rol === 'employee') router.push('/dashboard/productos')
 
 
-    const handleSubmit = async (e) => {
+    async function handleSubmit(e) {
+
+        console.log({ e })
+        const formData = new FormData(e);
 
         e.preventDefault();
 
@@ -39,7 +42,7 @@ export default function configuracion() {
             method: 'PATCH',
             credentials: 'include',
             body: data,
-            headers: { "Content-type": "multipart/form-data" }
+            headers: { 'Content-Type': 'multipart/form-data' }
 
         })
 
@@ -67,7 +70,7 @@ export default function configuracion() {
                         <form onSubmit={handleSubmit}>
 
                             <input type="file" name="user_image" />
-                            <button className="bg-gray-900 text-white p-3">Agregar</button>
+                            <button className="bg-gray-900 text-white p-3" type="submit" >Agregar</button>
 
                         </form>
                     </div>
