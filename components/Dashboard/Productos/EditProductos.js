@@ -6,7 +6,7 @@ export default function EditProductos({editar,handleModal}) {
 
 
 
-    console.log(editar)
+ 
 
     return (<>
 
