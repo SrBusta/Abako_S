@@ -51,28 +51,28 @@ export default function confGeneralForm(props) {
                 <div className="text-center lg:text-left">
                     <span className="font-semibold">Nombres :</span>
                 </div>
-                <div className="xl:col-span-2 text-center lg:text-left">
-                    <input onChange={handleChange} className="bg-transparent border-b-2  w-3/4 xl:text-left text-center focus:outline-none" type="text" id="firstname" name='firstName' />
+                <div className="lg:col-span-2 text-center lg:text-left">
+                    <input onChange={handleChange} className="bg-transparent border-b-2  w-3/4 lg:text-left text-center focus:outline-none" type="text" id="firstname" name='firstName' />
                 </div>
                 <div className="text-center lg:text-left">
                     <span className="font-semibold">Apellidos :</span>
                 </div>
-                <div className="xl:col-span-2 text-center lg:text-left">
-                    <input onChange={handleChange} className=" bg-transparent border-b-2  w-3/4 xl:text-left text-center focus:outline-none" type="text" id="lastname" name='lastName' />
+                <div className="lg:col-span-2 text-center lg:text-left">
+                    <input onChange={handleChange} className=" bg-transparent border-b-2  w-3/4 lg:text-left text-center focus:outline-none" type="text" id="lastname" name='lastName' />
                 </div>
                 <div className="text-center lg:text-left">
                     <span className="font-semibold">Usuario :</span>
                 </div>
-                <div className="xl:col-span-2 text-center lg:text-left">
-                    <input onChange={handleChange} className="bg-transparent border-b-2 w-3/4 xl:text-left text-center focus:outline-none" type="text" id="user" name='username'/>
+                <div className="lg:col-span-2 text-center lg:text-left">
+                    <input onChange={handleChange} className="bg-transparent border-b-2 w-3/4 lg:text-left text-center focus:outline-none" type="text" id="user" name='username'/>
                 </div>
                 <div className="text-center lg:text-left">
                     <span className="font-semibold">Correo :</span>
                 </div>
-                <div className="xl:col-span-2 text-center lg:text-left">
-                    <input onChange={handleChange} className="bg-transparent border-b-2 w-3/4 xl:text-left text-center focus:outline-none" type="text" id="email" name='email'/>
+                <div className="lg:col-span-2 text-center lg:text-left">
+                    <input onChange={handleChange} className="bg-transparent border-b-2 w-3/4 lg:text-left text-center focus:outline-none" type="text" id="email" name='email'/>
                 </div>
-                <div className="xl:col-start-2 col-start-1 grid grid-cols-2 gap-2">
+                <div className="lg:col-start-2 col-start-1 grid grid-cols-2 gap-2">
                     <button type="submit" className=" bg-gray-300  hover:bg-gray-700 hover:text-gray-200 text-gray-700 p-2 rounded-md  tracking-wide font-semibold  shadow-lg cursor-pointer transition ease-in duration-300">
                         Guardar 
                     </button>

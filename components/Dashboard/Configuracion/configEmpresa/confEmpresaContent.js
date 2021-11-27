@@ -7,19 +7,19 @@ export default function confEmpresaContent(props) {
         <div className="text-center lg:text-left">
             <span className="font-semibold">Nombre de Empresa :</span>
         </div>
-        <div className="xl:col-span-2 text-center lg:text-left border-b-2 border-transparent">
+        <div className="lg:col-span-2 text-center lg:text-left border-b-2 border-transparent">
             <span>{props.data.business.name}</span>
         </div>
         <div className=" text-center lg:text-left">
             <span className="font-semibold">Ruc :</span>
         </div>
-        <div className="xl:col-span-2 text-center lg:text-left border-b-2 border-transparent">
+        <div className="lg:col-span-2 text-center lg:text-left border-b-2 border-transparent">
             <span>{props.data.business.ruc}</span>
         </div>
         <div className="text-center lg:text-left">
             <span className="font-semibold">Descripcion :</span>
         </div>
-        <div className="xl:col-span-2 text-center lg:text-left border-b-2 border-transparent">
+        <div className="lg:col-span-2 text-center lg:text-left border-b-2 border-transparent">
             <span>{props.data.business.description}</span>
         </div></>)}
     </div>)

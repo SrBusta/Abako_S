@@ -95,7 +95,7 @@ export default function OneShop() {
 
                         {modal == "" ? (<></>) : (<NewEmpleados shop_id={id} handleModal={handleModal} />)}
                     </div>
-                    <div className="grid grid-cols-1 shadows dark:shadow-lg rounded-2xl h-full">
+                    <div className="grid grid-cols-1 rounded-2xl h-full">
 
                         {menuopciones == 'Productos' ? <ListProductos shop_id={id} /> : (menuopciones == 'Movimientos' ? <ListMovimientos shop_id={id} /> : (menuopciones == 'Empleados' ?
 

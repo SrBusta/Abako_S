@@ -24,7 +24,7 @@ export default function inicio() {
 
     if (data.rol == 'employee') router.push('dashboard/productos')
    
-
+  
     return (
 
         <Sidebar active='Inicio' color='red' username={data.username}>
