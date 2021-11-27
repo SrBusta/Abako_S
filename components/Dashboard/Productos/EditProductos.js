@@ -17,7 +17,39 @@ export default function EditProductos({ editar, handleModal,shop_id }) {
 
     })
 
- 
+    const handleChange = async (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+
+        setState((prevState) => ({
+            ...prevState,
+            [name]: value
+        }))
+
+    }
+
+    const handleSubmit = async event => {
+        event.preventDefault();
+
+        const res = await fetch(`https://abakoapi.herokuapp.com/api/user/shop/${shop_id}/product/${editar.data.id}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json', accessToken: Cookies.get('accessToken'), refreshToken: Cookies.get('refreshToken') },
+            body: JSON.stringify(state),
+            credentials: 'include'
+        })
+
+        mutate(`https://abakoapi.herokuapp.com/api/user/shop/${shop_id}/product`)
+        handleModal()
+    }
+
+    useEffect(() => {
+        document.getElementById('type').value=state.type
+        document.getElementById('brand').value=state.brand
+        document.getElementById('model').value=state.model
+        document.getElementById('priceBuy').value=state.priceBuy
+        document.getElementById('priceSell').value=state.priceSell
+
+    },[])
 
     return (<>
 
@@ -28,8 +60,6 @@ export default function EditProductos({ editar, handleModal,shop_id }) {
 
                 <form className="modal-conteiner" onSubmit={handleSubmit}>
 
-
-
                     <div className="flex items-center mb-5 md:flex-row flex-col">
                         <label htmlFor="name" className="inline-block w-20 md:mr-6 mr-0 md:text-right text-center font-bold dark:text-white text-gray-600">Tipo</label>
                         <input type="text" id="type" name="type"
@@ -37,8 +67,6 @@ export default function EditProductos({ editar, handleModal,shop_id }) {
                               text-gray-600 dark:text-white outline-none dark:bg-pruebaA3" onChange={handleChange}>
                         </input>
                     </div>
-
-
 
                     <div className="flex items-center mb-5 md:flex-row flex-col">
                         <label htmlFor="name" className="inline-block w-20 md:mr-6 mr-0 md:text-right text-center font-bold dark:text-white text-gray-600">Marca</label>
@@ -48,20 +76,21 @@ export default function EditProductos({ editar, handleModal,shop_id }) {
                         </input>
                     </div>
 
-
-
                     <div className="flex items-center mb-5 md:flex-row flex-col">
                         <label htmlFor="name" className="inline-block w-20 md:mr-6 mr-0 md:text-right text-center font-bold dark:text-white text-gray-600">Modelo</label>
                         <input type="text" id="model" name="model"
                             className="md:text-left text-center flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 
                             text-gray-600 dark:text-white outline-none dark:bg-pruebaA3" onChange={handleChange}></input>
                     </div>
+
                     <div className="flex items-center mb-5 md:flex-row flex-col">
                         <label htmlFor="name" className="inline-block md:w-20 w-full md:mr-6 mr-0 md:text-right text-center font-bold dark:text-white text-gray-600">Precio de Compra</label>
                         <input type="number" id="priceBuy" name="priceBuy"
                             className="md:text-left text-center flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 
                             text-gray-600 dark:text-white outline-none dark:bg-pruebaA3" onChange={handleChange} min="0.00" max="1000000.00" step="0.01"></input>
                     </div>
+
+
                     <div className="flex items-center mb-5 md:flex-row flex-col">
                         <label htmlFor="name" className="inline-block md:w-20 w-full md:mr-6 mr-0 md:text-right text-center font-bold dark:text-white text-gray-600">Precio de Venta</label>
                         <input type="number" id="priceSell" name="priceSell"
@@ -70,7 +99,6 @@ export default function EditProductos({ editar, handleModal,shop_id }) {
                     </div>
 
                     
-
                     <div className="text-right mx-2 flex flex-row md:block">
                         <button className="py-3 px-8 bg-green-400 text-white font-bold mx-2" type='submit' >Editar</button>
                         <button className="py-3 px-8 bg-red-400 text-white font-bold" onClick={handleModal} >Cerrar</button>
