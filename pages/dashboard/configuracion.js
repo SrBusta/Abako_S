@@ -27,30 +27,7 @@ export default function configuracion() {
     if (data.rol === 'employee') router.push('/dashboard/productos')
 
 
-    async function handleSubmit(e) {
-
-        console.log({ e })
-        const formData = new FormData(e);
-
-        e.preventDefault();
-
-        const data = new FormData()
-
-        data.append('user_image', e.file)
-
-        const response = await fetch('https://api.abako.xyz/api/user', {
-            method: 'PATCH',
-            credentials: 'include',
-            body: data,
-            headers: { 'Content-Type': 'multipart/form-data' }
-
-        })
-
-        const resJson = response.json();
-
-
-
-    }
+    
 
     return (
         <Sidebar active="Config" color='blue'>
